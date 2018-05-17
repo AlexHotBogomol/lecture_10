@@ -1,5 +1,5 @@
 global.bind = function (fn, context) {
-	 var argArray = [].slice.call(arguments, 2);
+	var argArray = [].slice.call(arguments, 2);
     return function(){
         return fn.apply(context, argArray)
    }
@@ -17,7 +17,7 @@ var printName = function (age, height){
     return this.name + age + height;
 };
 
-var newPrintName = myBind(printName, user2, 15, 20);
+var newPrintName = global.bind(printName, user2, 15, 20);
 
 
 console.log(printName.call(user));
